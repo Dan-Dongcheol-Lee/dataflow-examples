@@ -1,5 +1,11 @@
 # Dataflow batch examples
  
+# Setting up Google Account
+
+* Set up a Google Account on a local machine to run pipelines there
+- `gcloud init`: select your account and a project
+
+ 
 ## Running examples
  
 * Usage: `./make.sh <command> <projectId> <jobClass|jobName|templateName> <templateClient>`
@@ -12,6 +18,3 @@
 * example:
 - `/> ./make.sh runCloud projectId ChangingDataInDatastore`
  
-# prerequisites
-
-* Google Account is set up for a google project to run pipelines there by `gcloud init`
