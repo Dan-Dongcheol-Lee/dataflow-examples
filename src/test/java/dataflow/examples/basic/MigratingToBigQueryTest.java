@@ -68,14 +68,6 @@ public class MigratingToBigQueryTest {
                 .build();
     }
 
-    private Entity entityV2(String firstName, String lastName, String address) {
-        return Entity.newBuilder()
-                .putProperties("firstName", Value.newBuilder().setStringValue(firstName).build())
-                .putProperties("lastName", Value.newBuilder().setStringValue(lastName).build())
-                .putProperties("address", Value.newBuilder().setStringValue(address).build())
-                .build();
-    }
-
     private TableRow tableRow(String name, String address) {
         return new TableRow()
                 .set("name", name)
