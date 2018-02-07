@@ -1,0 +1,76 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        maven {
+            url 'https://maven-central.storage.googleapis.com'
+        }
+        mavenCentral()
+        jcenter()
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.4.1'
+}
+
+repositories {
+    mavenLocal()
+    maven {
+        url 'https://maven-central.storage.googleapis.com'
+    }
+    mavenCentral()
+    jcenter()
+}
+
+apply plugin: 'idea'
+apply plugin: 'java'
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+group = 'dataflow.examples'
+version = '0.1'
+
+configurations.all {
+    exclude group: 'com.google.guava', module: 'guava-jdk5'
+}
+
+dependencies {
+    compile 'org.apache.beam:beam-sdks-java-core:latest.release'
+    compile 'org.apache.beam:beam-runners-direct-java:latest.release'
+    compile 'org.apache.beam:beam-runners-google-cloud-dataflow-java:latest.release'
+    compile 'ch.qos.logback:logback-classic:1.2.3'
+    testCompile 'org.hamcrest:hamcrest-all:latest.release'
+}
+
+
+task runJob(type: JavaExec) {
+
+    def jobClass = getJobClass()
+    def options = getOptions()
+
+    classpath = sourceSets.main.runtimeClasspath
+    main = "${jobClass}"
+    args options
+
+    doFirst {
+        println "* main job class  : ${jobClass}"
+        println "* pipeline options: \n${options.join("\n")}\n"
+        sleep(5000)
+    }
+}
+
+tasks.runJob.dependsOn 'compileJava'
+
+def getJobClass() {
+    return project.hasProperty('jobClass') ? project.property('jobClass') : ''
+}
+
+// options: --KEY1=VALUE1 --KEY2=VALUE2
+def getOptions() {
+    def m = []
+    if (!project.hasProperty('options')) {
+        return m
+    }
+    return project.property('options').split()
+}

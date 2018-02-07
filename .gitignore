@@ -1,0 +1,19 @@
+build/
+classes/
+out/
+
+# Gradle caches
+.gradle/
+
+# OS custom attributes files and temp stuff
+.DS_Store
+.tmp/
+
+# IDE and text editor cruft
+.idea/
+
+# temporary ignore for IDEA project files (until we have the config worked out)
+*.iml
+
+src/main/generated/
+src/test/generated_tests/
