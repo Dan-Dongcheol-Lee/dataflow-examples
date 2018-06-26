@@ -2,7 +2,7 @@
  
 # Setting up Google Account
 
-* Set up a Google Account on a local machine to run pipelines there
+* Set up a Google Account on a local machine to run & deploy pipelines
 - `gcloud init`: select your account and a project
 
  
