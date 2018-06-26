@@ -6,7 +6,6 @@ import com.google.datastore.v1.Query;
 import com.google.datastore.v1.Value;
 import dataflow.examples.DataflowExampleOptions;
 import org.apache.beam.sdk.Pipeline;
-import org.apache.beam.sdk.PipelineResult;
 import org.apache.beam.sdk.io.gcp.bigquery.BigQueryIO;
 import org.apache.beam.sdk.io.gcp.bigquery.TableDestination;
 import org.apache.beam.sdk.io.gcp.datastore.DatastoreIO;

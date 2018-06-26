@@ -11,7 +11,6 @@ import org.apache.beam.sdk.options.Description;
 import org.apache.beam.sdk.options.PipelineOptionsFactory;
 import org.apache.beam.sdk.options.Validation;
 import org.apache.beam.sdk.options.ValueProvider;
-import org.apache.beam.sdk.repackaged.org.apache.commons.lang3.StringUtils;
 import org.apache.beam.sdk.transforms.DoFn;
 import org.apache.beam.sdk.transforms.ParDo;
 import org.apache.beam.sdk.transforms.display.DisplayData;
@@ -75,7 +74,7 @@ class CsvToDatastore {
                 .putProperties("name", Value.newBuilder()
                         .setStringValue(split[0].trim()).build())
                 .putProperties("address", Value.newBuilder()
-                        .setStringValue(StringUtils.remove(split[1].trim(), "\"")).build())
+                        .setStringValue(split[1].trim().replace("\"", "")).build())
                 .build();
     }
 
